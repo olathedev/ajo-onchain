@@ -19,7 +19,7 @@ const Dashboard = () => {
   const [addMoneyModal, setAddMoneyModal] = useState(false);
   const [formattedBalance, setFormattedBalance] = useState("0.00");
   const [formattedBalance2, setFormattedBalance2] = useState("0.00");
-  
+
   useEffect(() => {
     if (balance) {
       setFormattedBalance((Number(balance) / 10 ** 18).toFixed(2));
@@ -34,9 +34,24 @@ const Dashboard = () => {
 
   return (
     <div className="w-full ">
-      {error && (
-        <div>Error: {(error as BaseError).shortMessage || error.message}</div>
+      {formattedBalance === "0.00" && (
+        <div className="py-4 px-6 w-full bg-blue-500 bg-opacity-30 mb-4 rounded-2xl flex justify-between">
+          <div>
+            <h4 className="font-medium text-sm">Get owo token</h4>
+            <p className="text-gray-600 text-sm">
+              Seems you dont have OWO token for now, you can use swap by alajo
+              to swap your sepoliaEth to Owo
+            </p>
+          </div>
+
+          <div className="flex flex-col justify-end">
+            <button className="bg-black py-2 px-8 text-sm rounded-lg text-white">
+              Try Swap
+            </button>
+          </div>
+        </div>
       )}
+
       <div className="grid grid-cols-2  items-center gap-6">
         <BalanceCard
           title="your total balace"
