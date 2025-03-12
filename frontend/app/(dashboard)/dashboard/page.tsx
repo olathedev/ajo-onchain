@@ -3,11 +3,14 @@ import { AddContributionModal } from "@/components/home/AddcontributionModal";
 import BalanceCard from "@/components/home/BalanceCard";
 import { useGetErc20Balance } from "@/hooks/use-erc20";
 import { useGetUserContribution } from "@/hooks/use-getajo.read";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { BaseError } from "viem";
 import { useAccount } from "wagmi";
 
 const Dashboard = () => {
+  const router = useRouter();
+
   const [isLoading, setIsLoading] = useState(true);
 
   const { address, isConnected } = useAccount();
@@ -44,7 +47,10 @@ const Dashboard = () => {
             </p>
           </div>
 
-          <div className="flex flex-col justify-end">
+          <div
+            className="flex flex-col justify-end cursor-pointer"
+            onClick={() => router.push("/swap")}
+          >
             <button className="bg-black py-2 px-8 text-sm rounded-lg text-white">
               Try Swap
             </button>
