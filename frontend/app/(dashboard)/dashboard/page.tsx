@@ -37,7 +37,7 @@ const Dashboard = () => {
 
   return (
     <div className="w-full ">
-      {formattedBalance === "0.00" && (
+      {!isPending && formattedBalance === "0.00" && (
         <div className="py-4 px-6 w-full bg-blue-500 bg-opacity-30 mb-4 rounded-2xl flex justify-between">
           <div>
             <h4 className="font-medium text-sm">Get owo token</h4>
